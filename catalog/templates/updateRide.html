@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" src="{% static 'css\stylesBase1.css' %}">
+<script src="{% static 'js\app.js' %}"></script>
+<form method="post" action="" id="formSub">
+{% csrf_token %}
+{{form.as_p}}
+<a type="submit" onclick="submit()" class="button" id="" style="margin-left: 20px;">Update</a>
+</form>
+{% endblock %}

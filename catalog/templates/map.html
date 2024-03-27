@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="map" style="height: 400px;"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{ AIzaSyAdO4KcYKSTYUL6tcaDc6XGBcs89UiaUuA }}&callback=initMap" async defer></script>
+<script>
+    function initMap() {
+        var sourceLat = {{ sourceLat }};
+        var sourceLng = {{ sourceLng }};
+        var destLat = {{ destLat }};
+        var destLng = {{ destLng }};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: sourceLat, lng: sourceLng},
+            zoom: 8
+        });
+
+        var sourceMarker = new google.maps.Marker({
+            position: {lat: sourceLat, lng: sourceLng},
+            map: map,
+            title: 'Source'
+        });
+
+        var destMarker = new google.maps.Marker({
+            position: {lat: destLat, lng: destLng},
+            map: map,
+            title: 'Destination'
+        });
+    }
+</script>
+{% endblock %}

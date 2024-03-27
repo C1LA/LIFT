@@ -1,0 +1,40 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carpool</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="{% static 'css\stylesBase1.css' %}">
+    <div class="main">
+      <div class="top">
+        <header>
+          <nav>
+            <ul class="nav__links">
+              <li><a href="{% url 'allRides' %}" {% if request.path == '/carpool/allrides/' %} class = "active" {% endif %}>All Rides</a></li>
+              <li><a href="{% url 'myRides' %}" {% if request.path == '/carpool/myrides/' %} class = "active" {% endif %}>My Rides</a></li>
+              <li><a href="{% url 'create' %}" {% if request.path == '/carpool/create/' %} class = "active" {% endif %}>Create Ride</a></li>
+              <li><a href="{% url 'approvedRides' %}" {% if request.path == '/carpool/approvedrides/' %} class = "active" {% endif %}>Appoved Rides</a></li>
+              <li><a href="{% url 'pendingRides' %}" {% if request.path == '/carpool/pending' %} class = "active" {% endif %}>Pending Rides</a></li>
+              <li><a>{{user.username}}</a></li>
+            </ul>
+          </nav>
+          <a class="cta" href="{% url 'logout' %}">Logout</a>
+        </header>
+      </div>
+      {% if messages %}
+        {% for message in messages %}
+        <div>
+          {{message}}  <button class="button">X</button>
+        </div>
+        {% endfor %}
+      {% endif %}
+
+      {% block content %}
+
+      {% endblock %}
+    </div>
+  </body>
+</html>

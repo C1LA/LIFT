@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for ride in approvedRides %}
+    <div class="wrap">
+        <div class="ride">
+            <p class="neon">{{ride.Source_Address}}  - {{ride.Dest_Address}}</p>
+            <p class="neon">{{ride.date}}</p>
+            <p class="neon">{{ride.time}}</p>
+            <h2 class="neon">Approved</h2>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %} 

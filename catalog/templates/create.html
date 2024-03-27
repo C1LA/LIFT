@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css\stylesBase1.css' %}">
+<script src="{% static 'js\app.js' %}"></script>
+<div class="bottom">
+    <form method="post" id="formSub" class="form">
+        {% csrf_token %}
+        {{ create_rideForm.as_p }}
+        <button type="submit" class="button" style="margin-left: 20px;">Submit</button>
+    </form>
+</div>
+<script src="{% static 'js\app.js' %}"></script>
+
+{% endblock %}
