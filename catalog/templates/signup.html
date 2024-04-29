@@ -4,12 +4,14 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/stylesBase2.css' %}">
 <script src="{% static 'js\app.js' %}"></script>
+<div class="logo"></div>
 <div class="outer">    
     <div class="inner1">
         <form method="post" action="" class="form-box" id="formSub">
             <h1 class="neon" id="login">Sign-Up</h1>
             {% csrf_token %}
             {{form.as_p}}
+            <p>By registering, you agree to our <a href="{% url 'terms_and_conditions' %}">Terms and Conditions</a>.</p>
             <a onclick="submit()" class="button" id="submitButton">submit</a>
         </form>
     </div>

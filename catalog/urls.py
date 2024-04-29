@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from . import views
 urlpatterns = [
     path('login/', views.login_user, name = "login"),
@@ -19,4 +19,8 @@ urlpatterns = [
     path('logout/', views.logout_user, name = "logout"),
     path('pending', views.pendingRides, name = "pendingRides"),
     path('map/<int:rideID>', views.viewMap ,name = "map"),
-]
+    path('search/', views.search_rides, name='search_rides'),
+    path('terms-and-conditions/', views.terms_and_conditions, name='terms_and_conditions'),
+    
+    ]
+

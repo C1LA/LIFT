@@ -1,11 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import User
+import uuid
+
 # Create your models here.
 
 class Ride(models.Model):
     RideID = models.AutoField(primary_key = True)
     Source_Address = models.CharField(max_length = 128, help_text="")
     Dest_Address = models.CharField(max_length = 128, help_text="")
-    NumberPlate = models.CharField(max_length = 128, help_text="")  
+    NumberPlate = models.CharField(max_length = 128, help_text="") 
+    DL_No = models.CharField(max_length=100, help_text="")
     date = models.DateField(help_text="")
     time = models.TimeField(help_text="")
     Occupancy = models.IntegerField(help_text="")
@@ -21,3 +25,4 @@ class Request(models.Model):
 
     def __str__(self):
         return self.UserName
+

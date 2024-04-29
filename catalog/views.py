@@ -1,5 +1,5 @@
 from doctest import IGNORE_EXCEPTION_DETAIL
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import loginForm, create_rideForm, SignupForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -12,6 +12,10 @@ import openrouteservice as ors
 from django.http import Http404
 from django.conf import settings
 import requests
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+
 
 
 # Create your views here.
@@ -196,3 +200,15 @@ def viewMap(request, rideID):
     }
 
     return render(request, 'map.html', context)
+
+def search_rides(request):
+    query = request.GET.get('query')
+    if query:
+        results = Ride.objects.filter(Source_Address__icontains=query)
+        results = Ride.objects.filter(Dest_Address__icontains=query)
+        return render(request, 'allRides.html', {'ride_list': results})
+    else:
+        return redirect('allRides')
+
+def terms_and_conditions(request):
+    return render(request, 'terms_and_conditions.html')

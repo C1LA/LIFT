@@ -34,6 +34,9 @@ class create_rideForm(forms.ModelForm):
         self.fields["NumberPlate"].label = ""
         self.fields["NumberPlate"].widget.attrs["class"] = "input"
         self.fields["NumberPlate"].widget.attrs["placeholder"] = "Number Plate"
+        self.fields["DL_No"].label = ""
+        self.fields["DL_No"].widget.attrs["class"] = "input"
+        self.fields["DL_No"].widget.attrs["placeholder"] = "Driving License No"
         self.fields["date"].label = ""
         self.fields["date"].widget.attrs["class"] = "input"
         self.fields["time"].label = ""
@@ -44,7 +47,7 @@ class create_rideForm(forms.ModelForm):
 
     class Meta:
         model = Ride
-        fields = ["Source_Address", "Dest_Address", "NumberPlate", "date", "time", "Occupancy", "UserName"]
+        fields = ["Source_Address", "Dest_Address", "NumberPlate", "DL_No", "date", "time", "Occupancy", "UserName"]
         widgets = {
             'UserName' : forms.HiddenInput(),
             'date' : DateInput(),

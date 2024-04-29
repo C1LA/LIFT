@@ -1,175 +1,118 @@
+/* General body styling...where it shows rides */
 body {
-    background-color: rgb(36, 37, 38);
-    display: flex;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:rgb(2, 5, 48) ;
+    color: rgb(255, 255, 255);
 }
 
-.button {
-    font-family: sans-serif;
-    color: purple;    
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    text-decoration: none;
-    font-size: 20px;
-    overflow: hidden;
-    transition: 0.5s;
-    padding: 15px 30px;
-    cursor: pointer;
-}
-
-.button:hover {
-    color: purple;
-    background-color: gold;
-    box-shadow: 0 0 10px gold;
-}
-
-li, a {
-    font-family: sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: purple;
-    text-shadow: 0 0 15px;
-    text-decoration: none;
-}
-
+/* top part ..Header and navigation styles */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 10%;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: calc(16px + 0.9px); /* Adjust base size and scaling factor as needed */
+    background-color:  #1971cf;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.274);
 }
 
-.nav__links {
+/* Basic reset for list styles */
+ul.nav__links {
     list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color:rgb(2, 5, 48); /* Dark background for the navbar */
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
 }
 
-.nav__links li {
-    display: inline-block;
-    padding: 0 20px;
+ul.nav__links li {
+    flex-grow: 1; /* Makes each link expand to fill the space */
+    text-align: center; /* Centers text in each link */
 }
 
-.nav__links li a {
-    transition: all 0.5s ease 0s;
+
+ul.nav__links li a {
+    display: block;
+    color: silver; /* Light text color for contrast for the buttons */
+    text-align: center;
+    padding: 15px 20px; /* Padding around the links */
+    text-decoration: none; 
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.nav__links li a:hover {
-    transition: all 0.5s ease 0s;
-}
-
-.top {
-    top: 0;
+ul.nav__links li a {
     position: relative;
+    overflow: hidden;
+    transition: color 0.3s;
+}
+
+ul.nav__links li a:hover {
+    color: gold;
+}
+
+
+ul.nav__links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    height: 2px;
+    background-color: #1971cf;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
-.bottom {
-    position: relative;
+ul.nav__links li a:hover::after {
+    transform: scaleX(1);
 }
 
+/* Active class styling */
+ul.nav__links li a.active {
+    background-color: #0d3b66; /* Green background for active links */
+    color: white;
+    border-bottom: 3px solid rgb(0, 0, 0); /* Yellow bottom border for highlight */
+}
+
+.username {
+    font-weight: bold; /* Keeps the text bold */
+    font-size: 18px; /* Larger font size */
+    color: #f0f0f0; /* Light color for contrast */
+    background-color: #35495e; /* Dark background for the text */
+    padding: 10px 15px; /* Adequate padding around the text */
+    border: 2px solid #7092b5; /* Border that complements the background */
+    border-radius: 10px; /* Rounded corners */
+    text-shadow: 1px 1px 2px #000; /* Subtle text shadow for depth */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+    margin: 0 50px; /* Horizontal margin to space it out from other nav links */
+}
+
+/* Main content area */
 .main {
-    width: 100%;
-    height: 100vh;
-}
-
-.input {
-    width: 50%;
-    padding: 12px 20px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    display: inline-block;
-    border: 1px solid gold;
-    box-shadow: 0 0 15px;
-    box-sizing: border-box;
-    background-color: rgb(36, 37, 38);
-    font-size: 20px;
-}
-
-input {
-    color: purple;
-}
-
-::placeholder {
-    color: purple;
-}
-
-input[type="date"] {
-    width: 50%;
-    padding: 12px 20px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    display: inline-block;
-    border: 1px solid gold;
-    box-shadow: 0 0 15px;
-    box-sizing: border-box;
-    background-color: rgb(36, 37, 38);
-    font-size: 20px;
-}
-
-input[type="time"] {
-    width: 50%;
-    padding: 12px 20px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    display: inline-block;
-    border: 1px solid gold;
-    box-shadow: 0 0 15px;
-    box-sizing: border-box;
-    background-color: rgb(36, 37, 38);
-    font-size: 20px;
-}
-
-.ride {
-    margin-left: 3px;
-    padding-top: 7px;
-    z-index: 99;
-    width: 99.5%;
-    height: 99%;
-    text-align: center;
-    background: rgb(36, 37, 38);
-}
-
-.neon {
-    color: white;
-    text-shadow: 0 0 15px;
-    font-family: sans-serif;
-    text-decoration: none;
+    padding: 20px;
+    background-color:rgba(0,0,0,0.1);
     margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
-.active {
-    font-family: sans-serif;
-    font-weight: 500;
+/* Buttons */
+.button, .cta {
+    padding: 8px 16px;
+    background-color: #1971cf;
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
     font-size: 16px;
-    color: white;
-    text-shadow: 0 0 15px;
-    text-decoration: none;
+    border-radius: 5px;
 }
 
-.buttonDiv {
-    position: relative;
-    text-align: center;
-    width: 50%;
-    float: right;
-    height: inherit;
-}
-
-.neonText {
-    width: 50%;
-    color: white;
-    text-shadow: 0 0 15px;
-    font-family: sans-serif;
-    text-decoration: none;
-    text-align: left;
-    padding: 5px; 
-}
-
-.wrap {
-    z-index: -1;
-    width: 100%;
-    text-align: center;
-    background: linear-gradient(45deg, purple, gold);
-}
-
-.mapDiv {
-    width: 50%;
-    float: right;
+.button:hover, .cta:hover {
+    background-color: gold;
 }
